@@ -34,7 +34,7 @@ jobs:
         run: npm run build
 
   publish:
-    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main' && github.actor == 'KunalBurangi'
     needs: build-test-lint
     runs-on: ubuntu-latest
 
