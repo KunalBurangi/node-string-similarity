@@ -3,10 +3,10 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - '**'
+      - "**"
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   build-test-lint:
@@ -34,7 +34,7 @@ jobs:
         run: npm run build
 
   publish:
-    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main' && github.actor == "KunalBurangi"
+    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main' && github.actor == 'KunalBurangi'
     needs: build-test-lint
     runs-on: ubuntu-latest
 
