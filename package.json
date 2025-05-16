@@ -1,6 +1,6 @@
 {
   "name": "node-string-similarity",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "A TypeScript library for string similarity comparison",
   "main": "dist/index.js",
   "bin": {
