@@ -1,0 +1,46 @@
+{
+  "name": "string-similarity",
+  "version": "1.0.0",
+  "description": "A TypeScript library for string similarity comparison",
+  "main": "dist/index.js",
+  "bin": {
+    "string-similarity": "dist/cli.js"
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "keywords": [
+    "string",
+    "similarity",
+    "typescript",
+    "comparison",
+    "jaro-winkler",
+    "cosine-similarity",
+    "dice-coefficient",
+    "levenshtein-distance"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.0.0",
+    "@types/pg": "^8.15.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "pg": "^8.16.0",
+    "ts-jest": "^29.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
