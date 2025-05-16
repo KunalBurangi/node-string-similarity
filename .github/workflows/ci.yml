@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - "**"
+  workflow_dispatch:
 
 jobs:
   build-test-lint:
@@ -34,16 +35,13 @@ jobs:
         run: npm run build
 
   publish:
-    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main' && github.actor == 'KunalBurangi'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.event.ref == 'refs/heads/main')
     needs: build-test-lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Require manual approval
-        uses: hmarr/auto-approve-action@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
