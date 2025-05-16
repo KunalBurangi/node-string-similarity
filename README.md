@@ -1,4 +1,4 @@
-# String Similarity Library
+# Node String Similarity
 
 A TypeScript library for comparing strings using various similarity algorithms.
 
@@ -19,7 +19,7 @@ A TypeScript library for comparing strings using various similarity algorithms.
 ## Installation
 
 ```bash
-npm install string-similarity
+npm install node-string-similarity
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ import {
   diceCoefficient,
   batchCompareStrings,
   findMatchesAboveThreshold,
-} from "string-similarity";
+} from "node-string-similarity";
 ```
 
 ### Comparing Strings
@@ -68,7 +68,7 @@ console.log(matches);
 ### Visualization
 
 ```typescript
-import { visualizeStringDifferences } from "string-similarity/visualization";
+import { visualizeStringDifferences } from "node-string-similarity/visualization";
 
 const visualization = visualizeStringDifferences("hello", "hell");
 console.log(visualization);
@@ -79,16 +79,16 @@ console.log(visualization);
 ### Installation
 
 ```bash
-npm install -g string-similarity
+npm install -g node-string-similarity
 ```
 
 ### Usage
 
 ```bash
-string-similarity compare "hello" "world"
-string-similarity jaro-winkler "hello" "hell"
-string-similarity cosine "hello" "world"
-string-similarity dice "hello" "hell"
+node-string-similarity compare "hello" "world"
+node-string-similarity jaro-winkler "hello" "hell"
+node-string-similarity cosine "hello" "world"
+node-string-similarity dice "hello" "hell"
 ```
 
 ## RESTful API
@@ -128,7 +128,7 @@ node dist/api/server.js
 ### Finding Similar Entries
 
 ```typescript
-import { findSimilarEntries } from "string-similarity/dbUtils";
+import { findSimilarEntries } from "node-string-similarity/dbUtils";
 
 const results = await findSimilarEntries("hello", "my_table", "my_column", 0.8);
 console.log(results);
@@ -137,7 +137,7 @@ console.log(results);
 ### Inserting a String Entry
 
 ```typescript
-import { insertStringEntry } from "string-similarity/dbUtils";
+import { insertStringEntry } from "node-string-similarity/dbUtils";
 
 await insertStringEntry("my_table", "my_column", "hello");
 ```

@@ -52,16 +52,19 @@ describe("compareStrings", () => {
   it("should handle empty strings correctly", () => {
     try {
       expect(compareStrings("", "")).toBe(1.0);
-    } catch (err: any) {
-      expect(err.message).toBe("Both strings must be non-empty");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        expect(err.message).toBe("Both strings must be non-empty");
+      }
     }
 
     try {
       compareStrings("hello", "");
     } catch (error) {
-      const err = error as Error;
-      console.log("Caught error:", err.message);
-      expect(err.message).toBe("Both strings must be non-empty");
+      if (error instanceof Error) {
+        console.log("Caught error:", error.message);
+        expect(error.message).toBe("Both strings must be non-empty");
+      }
     }
   });
 

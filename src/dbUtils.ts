@@ -14,19 +14,24 @@ export async function findSimilarEntries(
   tableName: string,
   columnName: string,
   threshold: number,
-): Promise<Array<any>> {
+): Promise<Array<{ id: string; value: string | null; similarity: number }>> {
   const client = await pool.connect();
   try {
     const query = `SELECT id, ${columnName} FROM ${tableName}`;
-    const result: QueryResult<{ id: string; [key: string]: string }> =
+    const result: QueryResult<{ id: string; [key: string]: string | null }> =
       await client.query(query);
 
     const similarEntries = result.rows
-      .map((row) => {
-        const similarity = compareStrings(target, row[columnName]);
+      .map((row: { id: string; [key: string]: string | null }) => {
+        const similarity = row[columnName]
+          ? compareStrings(target, row[columnName])
+          : 0;
         return { id: String(row.id), value: row[columnName], similarity };
       })
-      .filter((entry) => entry.similarity >= threshold)
+      .filter(
+        (entry: { id: string; value: string | null; similarity: number }) =>
+          entry.similarity >= threshold,
+      )
       .sort((a, b) => b.similarity - a.similarity);
 
     return similarEntries;

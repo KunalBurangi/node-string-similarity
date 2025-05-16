@@ -30,7 +30,7 @@ yargs(hideBin(process.argv))
   .command<{ str1: string; str2: string }>(
     "jaro-winkler <str1> <str2>",
     "Compare two strings using the Jaro-Winkler algorithm",
-    (yargs: any) => {
+    (yargs: import("yargs").Argv) => {
       return yargs
         .positional("str1", {
           describe: "First string",
